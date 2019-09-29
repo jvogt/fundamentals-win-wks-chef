@@ -3,7 +3,10 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                powershell '. shipit.ps1'
+                dir("${env.WORKSPACE}/aQA"){
+                  powershell 'ls'
+                  powershell '. shipit.ps1'
+                }
             }
         }
     }
