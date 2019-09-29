@@ -5,7 +5,7 @@
 # Copyright:: 2019, The Authors, All Rights Reserved.
 
 file 'c:/hello.txt' do
-  content 'Hello Fundamentals Class!'
+  content "Hello Fundamentals Class! Password: " + node['workstation_password']
   action :create
 end
 
