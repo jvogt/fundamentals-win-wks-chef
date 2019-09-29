@@ -5,7 +5,7 @@ pipeline {
             steps {
                 dir("${env.WORKSPACE}"){
                   powershell 'ls'
-                  powershell '. shipit.ps1'
+                  powershell '. ./shipit.ps1'
                 }
             }
         }
