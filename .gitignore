@@ -1,4 +1,4 @@
 .DS_Store
-.kitchen
-.terraform
+.kitchen/
 *.tfstate
+results/

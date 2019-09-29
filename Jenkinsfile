@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                bat 'hab --version'
+                powershell '. shipit.ps1'
             }
         }
     }
