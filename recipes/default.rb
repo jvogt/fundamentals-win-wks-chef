@@ -33,9 +33,9 @@ end
 
 # note: chocolatey_package no worky on effortless
 %w(googlechrome atom putty cmder chefdk git).each do |p|
-  execute "choco install -y #{p}" do
+  execute "choco install -force -y #{p}" do
     action :run
-    not_if "if ($(choco list -l -r) -like '*#{p}*') { exit 0 } else { exit 1 }"
+    # not_if "if ($(choco list -l -r) -like '*#{p}*') { exit 0 } else { exit 1 }"
     guard_interpreter :powershell_script
     user 'administrator'
     password node['workstation_password']
