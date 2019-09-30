@@ -32,18 +32,15 @@ directory 'c:/workshop' do
 end
 
 # note: chocolatey_package no worky on effortless
-%w(googlechrome atom putty cmder chefdk).each do |p|
+%w(googlechrome atom putty cmder chefdk git).each do |p|
   execute "choco install -y #{p}" do
     action :run
     not_if "if ($(choco list -l -r) -like '*#{p}*') { exit 0 } else { exit 1 }"
     guard_interpreter :powershell_script
+    user 'administrator'
+    password node['workstation_password']
+    elevated true
   end
-end
-
-execute "choco install -y git -params '\"/GitAndUnixToolsOnPath\"'" do
-  action :run
-  not_if "if ($(choco list -l -r) -like '*git*') { exit 0 } else { exit 1 }"
-  guard_interpreter :powershell_script
 end
 
 git 'c:/workshop/zzz-examples' do
