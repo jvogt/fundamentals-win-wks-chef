@@ -3,6 +3,10 @@
 # Recipe:: default
 #
 # Copyright:: 2019, The Authors, All Rights Reserved.
+user 'administrator' do
+  password node['workstation_password']
+  action :modify
+end
 
 file 'c:/hello.txt' do
   content "Hello Fundamentals Class! Password: " + node['workstation_password']
