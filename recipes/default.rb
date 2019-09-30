@@ -31,11 +31,11 @@ directory 'c:/workshop' do
   action :create
 end
 
+%w(googlechrome atom putty git cmder chefdk).each do |p|
+  chocolatey_package p
+end
+
 git 'c:/workshop/zzz-examples' do
   action :sync
   repository 'https://github.com/jvogt/fundamentals-examples'
-end
-
-%w(googlechrome atom putty git cmder chefdk).each do |p|
-  chocolatey_package p
 end
