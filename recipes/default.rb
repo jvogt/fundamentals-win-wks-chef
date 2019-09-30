@@ -9,7 +9,7 @@ user 'administrator' do
 end
 
 file 'c:/hello.txt' do
-  content "Hello Fundamentals Class! Password: " + node['workstation_password']
+  content "Hello Fundamentals Class!"
   action :create
 end
 
@@ -35,17 +35,6 @@ directory 'c:/workshop' do
   action :create
 end
 
-# note: chocolatey_package no worky on effortless
-%w(googlechrome atom putty cmder chefdk git).each do |p|
-  execute "choco install -force -y #{p}" do
-    action :run
-    # not_if "if ($(choco list -l -r) -like '*#{p}*') { exit 0 } else { exit 1 }"
-    guard_interpreter :powershell_script
-    user 'administrator'
-    password node['workstation_password']
-    elevated true
-  end
-end
 
 git 'c:/workshop/zzz-examples' do
   action :sync
