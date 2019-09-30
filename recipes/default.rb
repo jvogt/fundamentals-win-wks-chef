@@ -31,8 +31,13 @@ directory 'c:/workshop' do
   action :create
 end
 
+# note: chocolatey_package no worky on effortless
 %w(googlechrome atom putty git cmder chefdk).each do |p|
-  chocolatey_package p
+  execute "choco install -y #{p}" do
+    action :run
+    not_if "if ($(choco list -l -r) -like '*#{p}*') { exit 0 } else { exit 1 }"
+    guard_interpreter :powershell_script
+  end
 end
 
 git 'c:/workshop/zzz-examples' do
