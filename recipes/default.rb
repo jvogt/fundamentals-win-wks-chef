@@ -34,7 +34,8 @@ end
 
 file 'c:/users/administrator/.chef/config.rb' do
   action :create
-  content "chef_server_url: '#{node['chef_server_url']}
+  content "chef_server_url: '#{node['chef_server_url']}'
 node_name: '#{node['workstation_user']}'
 client_key: File.dirname(__FILE__) + '/user.pem'
 "
+end
