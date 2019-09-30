@@ -9,19 +9,6 @@ file 'c:/hello.txt' do
   action :create
 end
 
-%w(googlechrome atom putty git cmder chefdk).each do |p|
-  chocolatey_package p
-end
-
-directory 'c:/workshop' do
-  action :create
-end
-
-git 'c:/workshop/zzz-examples' do
-  action :sync
-  repository 'https://github.com/jvogt/fundamentals-examples'
-end
-
 directory 'c:/users/administrator/.chef' do
   action :create
   recursive true
@@ -38,4 +25,17 @@ file 'c:/users/administrator/.chef/config.rb' do
 node_name: '#{node['workstation_user']}'
 client_key: File.dirname(__FILE__) + '/user.pem'
 "
+end
+
+directory 'c:/workshop' do
+  action :create
+end
+
+git 'c:/workshop/zzz-examples' do
+  action :sync
+  repository 'https://github.com/jvogt/fundamentals-examples'
+end
+
+%w(googlechrome atom putty git cmder chefdk).each do |p|
+  chocolatey_package p
 end
