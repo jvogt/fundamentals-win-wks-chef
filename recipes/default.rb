@@ -41,7 +41,12 @@ end
 directory 'c:/workshop' do
   action :create
 end
+
 directory 'c:/workshop/cookbooks' do
+  action :create
+end
+
+directory 'c:/workshop/policyfiles' do
   action :create
 end
 
