@@ -23,6 +23,13 @@ file 'c:/users/administrator/.chef/user.pem' do
   content node['chef_client_key']
 end
 
+file 'c:/users/administrator/.gitconfig' do
+  action :create
+  content "[user]
+email = you@example.com
+name = Your Name
+"
+end
 file 'c:/users/administrator/.chef/config.rb' do
   action :create
   content "chef_server_url '#{node['chef_server_url']}'
